@@ -1,16 +1,17 @@
 import React, { useState, useContext } from 'react';
-import {ContactContext} from './Store'
+import { ContactContext } from './Store';
 const ContactComponent = () => {
   const [name, SetName] = useState('');
   const [age, SetAge] = useState('');
   const [phone, SetPhone] = useState('');
   const [email, SetEmail] = useState('');
+  const [state, dispatch] = useContext(ContactContext);
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    dispatch({ type: 'ADD_CONTACT' });
   };
-  const [state, dispatch] = useContext(ContactContext);
-  console.log(state);
+
   return (
     <div>
       <p>Contact Component</p>
