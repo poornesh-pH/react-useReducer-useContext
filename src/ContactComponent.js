@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-
+import React, { useState, useContext } from 'react';
+import {ContactContext} from './Store'
 const ContactComponent = () => {
   const [name, SetName] = useState('');
   const [age, SetAge] = useState('');
@@ -9,6 +9,8 @@ const ContactComponent = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
   };
+  const [state, dispatch] = useContext(ContactContext);
+  console.log(state);
   return (
     <div>
       <p>Contact Component</p>
@@ -18,7 +20,8 @@ const ContactComponent = () => {
           type="text"
           name="name"
           id="name"
-          onChange={(e) => SetName(e.target.name)}
+          value={name}
+          onChange={(e) => SetName(e.target.value)}
         />
         <br />
         <label htmlFor="age">Age</label>
@@ -26,7 +29,8 @@ const ContactComponent = () => {
           type="text"
           name="age"
           id="age"
-          onChange={(e) => SetAge(e.target.age)}
+          value={age}
+          onChange={(e) => SetAge(e.target.value)}
         />
         <br />
         <label htmlFor="phone">Phone</label>
@@ -34,7 +38,8 @@ const ContactComponent = () => {
           type="text"
           name="phone"
           id="phone"
-          onChange={(e) => SetPhone(e.target.phone)}
+          value={phone}
+          onChange={(e) => SetPhone(e.target.value)}
         />
         <br />
         <label htmlFor="email">Email</label>
@@ -42,8 +47,10 @@ const ContactComponent = () => {
           type="text"
           name="email"
           id="email"
-          onChange={(e) => SetEmail(e.target.email)}
+          value={email}
+          onChange={(e) => SetEmail(e.target.value)}
         />
+        <br />
         <input type="submit" />
       </form>
     </div>

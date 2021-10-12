@@ -2,9 +2,9 @@ import React, { createContext, useReducer } from 'react';
 import ContactReducer from './ContactReducer';
 
 const Store = ({ children }) => {
-  const [contact, dispatch] = useReducer(initialState, ContactReducer);
+  const [state, dispatch] = useReducer(ContactReducer, initialState);
   return (
-    <ContactContext.Provider value={[contact, dispatch]}>
+    <ContactContext.Provider value={[state, dispatch]}>
       {children}
     </ContactContext.Provider>
   );
