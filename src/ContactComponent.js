@@ -1,5 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { ContactContext } from './Store';
+import { v4 as uuidv4 } from 'uuid';
 const ContactComponent = () => {
   const [name, SetName] = useState('');
   const [age, SetAge] = useState('');
@@ -9,12 +10,19 @@ const ContactComponent = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch({ type: 'ADD_CONTACT' });
+    dispatch({
+      type: 'ADD_CONTACT',
+      contact: { id: uuidv4(), name, age, phone, email },
+    });
+    SetAge('');
+    SetEmail('');
+    SetName('');
+    SetPhone('');
   };
 
   return (
     <div>
-      <p>Contact Component</p>
+      <p>Contact Form</p>
       <form onSubmit={handleSubmit}>
         <label htmlFor="name">Name</label>
         <input
@@ -45,7 +53,7 @@ const ContactComponent = () => {
         <br />
         <label htmlFor="email">Email</label>
         <input
-          type="text"
+          type="email"
           name="email"
           id="email"
           value={email}

@@ -12,9 +12,10 @@ const Store = ({ children }) => {
 
 const initialState = [
   {
+    id: 1,
     name: 'Poornesh',
     age: '25',
-    email: 'poorneshtest@gmail.com',
+    email: 'poornesh@gmail.com',
     phone: '9043494878',
   },
 ];

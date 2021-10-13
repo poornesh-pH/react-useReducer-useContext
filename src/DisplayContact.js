@@ -2,17 +2,23 @@ import React, { useContext } from 'react';
 import { ContactContext } from './Store';
 const DisplayContact = () => {
   const [state, dispatch] = useContext(ContactContext);
-  console.log(state);
   return (
     <div>
       {state.map((contact) => {
         return (
           <div key={contact.name}>
+            <p>Name: {contact.name}</p>
+            <p>Age: {contact.age}</p>
+            <p>Phone: {contact.phone}</p>
+            <p>Email: {contact.email}</p>
+            <button
+              onClick={() =>
+                dispatch({ type: 'DELETE_CONTACT', id: contact.id })
+              }
+            >
+              Delete
+            </button>
             <hr />
-            <p>{contact.name}</p>
-            <p>{contact.age}</p>
-            <p>{contact.phone}</p>
-            <p>{contact.email}</p>
           </div>
         );
       })}
