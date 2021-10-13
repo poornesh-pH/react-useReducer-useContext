@@ -1,12 +1,14 @@
 import React from 'react';
 import './style.css';
 import ContactComponent from './ContactComponent';
-export default function App() {
+import DisplayContact from './DisplayContact';
+import Store from './Store';
+export default function App(props) {
   return (
-    <div>
-      <h1>Hello StackBlitz!</h1>
-      <p>Start editing to see some magic happen :)</p>
+    <Store>
+      <h4>Contact Dashboard</h4>
+      <DisplayContact />
       <ContactComponent />
-    </div>
+    </Store>
   );
 }
